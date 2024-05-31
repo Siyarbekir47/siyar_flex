@@ -5,7 +5,7 @@ class MovieService {
   final String apiKey = 'a688cc255c4b3ce956b33f5a9f212e58';
   final String baseUrl = 'https://api.themoviedb.org/3';
 
-  Future<List<Movie>> fetchMovies() async {
+  Future<List<Movie>> fetchPopularMovies() async {
     final response = await http.get(
       Uri.parse('$baseUrl/movie/popular?api_key=$apiKey'),
     );
