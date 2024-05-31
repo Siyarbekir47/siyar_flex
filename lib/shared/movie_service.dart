@@ -23,13 +23,15 @@ class MovieService {
 class Movie {
   final String title;
   final String posterPath;
+  final int id;
 
-  Movie({required this.title, required this.posterPath});
+  Movie({required this.title, required this.posterPath, required this.id});
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       title: json['title'],
       posterPath: json['poster_path'],
+      id: json['id'],
     );
   }
 

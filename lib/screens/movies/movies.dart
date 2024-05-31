@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:siyar_flex/main.dart';
-import 'package:siyar_flex/movie_service.dart';
+import 'package:siyar_flex/shared/movie_service.dart';
+import 'package:siyar_flex/shared/details.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({super.key});
@@ -57,11 +58,22 @@ class _MovieListState extends State<MovieList> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final movie = snapshot.data![index];
-                return GridTile(
-                  child: Image.network(movie.getPosterUrl(), fit: BoxFit.cover),
-                  footer: GridTileBar(
-                    backgroundColor: Colors.black54,
-                    title: Text(movie.title, textAlign: TextAlign.center),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Details(id: movie.id),
+                      ),
+                    );
+                  },
+                  child: GridTile(
+                    footer: GridTileBar(
+                      backgroundColor: Colors.black54,
+                      title: Text(movie.title, textAlign: TextAlign.center),
+                    ),
+                    child:
+                        Image.network(movie.getPosterUrl(), fit: BoxFit.cover),
                   ),
                 );
               },
