@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:siyar_flex/screens/home/home.dart';
 import 'package:siyar_flex/screens/video_link_screens.dart';
 import 'package:siyar_flex/shared/movie_service.dart';
 
@@ -14,7 +13,6 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
       appBar: AppBar(
         title: Text('${widget.movie.title} '),
       ),
@@ -31,30 +29,25 @@ class _DetailsState extends State<Details> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                color: Colors.grey[900],
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       widget.movie.overview,
-                      style: const TextStyle(fontSize: 16, color: Colors.white),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 10),
                     Text(
                       'Rating: ${widget.movie.voteAverage.toStringAsFixed(1)}/10',
                       style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          fontSize: 16, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
                       'Release Date: ${widget.movie.releaseDate}',
                       style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

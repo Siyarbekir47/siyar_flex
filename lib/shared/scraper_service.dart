@@ -18,7 +18,7 @@ class ScraperService {
         'sec-fetch-dest': 'empty',
         'sec-fetch-mode': 'cors',
         'sec-fetch-site': 'same-origin',
-        'Referer': "https://vavoo.to/web-vod/item?id=movie.${movieId}",
+        'Referer': "https://vavoo.to/web-vod/item?id=movie.$movieId",
       },
     );
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siyar_flex/shared/scraper_service.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:siyar_flex/screens/video_player_screen.dart';
 
 class VideoLinkScreen extends StatefulWidget {
   const VideoLinkScreen({super.key, required this.movieId});
@@ -22,13 +22,13 @@ class _VideoLinkScreenState extends State<VideoLinkScreen> {
         widget.movieId);
   }
 
-  void _launchURL(String url) async {
-    final completeUrl = 'https://vavoo.to/web-vod/api/get?link=$url';
-    if (await canLaunch(completeUrl)) {
-      await launch(completeUrl);
-    } else {
-      throw 'Could not launch $completeUrl';
-    }
+  void _playVideo(String url) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VideoPlayerScreen(videoUrl: url),
+      ),
+    );
   }
 
   @override
@@ -54,7 +54,10 @@ class _VideoLinkScreenState extends State<VideoLinkScreen> {
                 return ListTile(
                   title: Text('Video Link ${index + 1}'),
                   subtitle: Text(url),
-                  onTap: () => _launchURL(url),
+                  onTap: () =>
+                      _playVideo("https://vavoo.to/web-vod/api/get?link=$url"),
+                  // Clipboard.setData(ClipboardData(
+                  //     text: "https://vavoo.to/web-vod/api/get?link=$url")),
                 );
               },
             );
