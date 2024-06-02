@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:siyar_flex/screens/movies/movies.dart';
 import 'package:siyar_flex/screens/movies/movies_popular.dart';
 
 class Home extends StatefulWidget {
@@ -10,7 +9,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
+  final List<Widget> _pages = const [
     Center(child: Text('Home')),
     MoviePopular(),
     Center(child: Text('Series')),

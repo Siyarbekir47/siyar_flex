@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:siyar_flex/main.dart';
 import 'package:siyar_flex/screens/home/home.dart';
 import 'package:siyar_flex/shared/movie_service.dart';
-import 'package:siyar_flex/shared/details.dart';
+import 'package:siyar_flex/screens/details.dart';
 import 'package:siyar_flex/shared/styledappbar.dart';
 
 class MoviePopular extends StatefulWidget {
@@ -25,6 +25,7 @@ class _MoviePopularState extends State<MoviePopular> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[800],
       body: FutureBuilder<List<Movie>>(
         future: _movies,
         builder: (context, snapshot) {
@@ -51,7 +52,7 @@ class _MoviePopularState extends State<MoviePopular> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Details(id: movie.id),
+                        builder: (context) => Details(movie: movie),
                       ),
                     );
                   },
