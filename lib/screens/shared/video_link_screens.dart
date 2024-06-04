@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:video_player/video_player.dart';
 import 'package:siyar_flex/shared/scraper_service.dart';
-import 'package:siyar_flex/screens/video_player_screen.dart';
 
 class VideoLinkScreen extends StatefulWidget {
   const VideoLinkScreen({super.key, required this.movieId});
@@ -54,15 +55,67 @@ class _VideoLinkScreenState extends State<VideoLinkScreen> {
                 return ListTile(
                   title: Text('Video Link ${index + 1}'),
                   subtitle: Text(url),
-                  onTap: () =>
-                      _playVideo("https://vavoo.to/web-vod/api/get?link=$url"),
-                  // Clipboard.setData(ClipboardData(
-                  //     text: "https://vavoo.to/web-vod/api/get?link=$url")),
+                  onTap: () {
+                    Clipboard.setData(ClipboardData(
+                        text: "https://vavoo.to/web-vod/api/get?link=$url"));
+                    _playVideo("https://vavoo.to/web-vod/api/get?link=$url");
+                  },
                 );
               },
             );
           }
         },
+      ),
+    );
+  }
+}
+
+class VideoPlayerScreen extends StatefulWidget {
+  const VideoPlayerScreen({super.key, required this.videoUrl});
+  final String videoUrl;
+
+  @override
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+}
+
+class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  late VideoPlayerController _controller;
+  bool _isInitialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializePlayer();
+  }
+
+  void _initializePlayer() async {
+    _controller = VideoPlayerController.network(widget.videoUrl);
+    await _controller.initialize();
+    setState(() {
+      _isInitialized = true;
+    });
+    _controller.play();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Video Player'),
+      ),
+      body: Center(
+        child: _isInitialized
+            ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              )
+            : CircularProgressIndicator(),
       ),
     );
   }

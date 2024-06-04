@@ -9,12 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: 1.2.1
+  http: ^1.2.1
   html: ^0.15.0
   url_launcher: ^6.0.20
-  video_player: ^2.2.11
-  chewie: ^1.2.2
-
+  video_player: ^2.2.18 # Check for the latest version
 dev_dependencies:
   flutter_test:
     sdk: flutter

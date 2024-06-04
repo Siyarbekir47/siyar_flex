@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:siyar_flex/shared/movie_service.dart';
-import 'package:siyar_flex/screens/details.dart';
+import 'package:siyar_flex/screens/shared/details.dart';
 
 class MoviePopular extends StatefulWidget {
   const MoviePopular({super.key});

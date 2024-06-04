@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:siyar_flex/screens/video_link_screens.dart';
+import 'package:siyar_flex/screens/shared/video_link_screens.dart';
 import 'package:siyar_flex/shared/movie_service.dart';
 
 class Details extends StatefulWidget {
