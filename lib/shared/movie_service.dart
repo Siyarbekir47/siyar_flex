@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class MovieService {
-  final String apiKey = 'a688cc255c4b3ce956b33f5a9f212e58';
+  final String apiKey = 'YOUR_API_KEY';
   final String baseUrl = 'https://api.themoviedb.org/3';
 
   Future<List<Movie>> fetchPopularMovies() async {
